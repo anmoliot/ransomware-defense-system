@@ -1,0 +1,1 @@
+"""Windows advanced telemetry adapters."""

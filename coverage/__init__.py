@@ -1,0 +1,1 @@
+"""Detection coverage analytics."""

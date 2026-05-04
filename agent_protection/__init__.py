@@ -1,0 +1,1 @@
+"""EDR agent self-protection."""

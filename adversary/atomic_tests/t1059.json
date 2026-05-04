@@ -1,0 +1,5 @@
+{
+  "technique": "T1059",
+  "name": "Command and Scripting Interpreter",
+  "safe_command": "echo simulated powershell activity"
+}

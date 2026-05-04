@@ -1,0 +1,11 @@
+{
+  "name": "ransomware_containment",
+  "trigger": "verdict.state == ATTACK",
+  "actions": [
+    "isolate_host",
+    "kill_suspicious_processes",
+    "export_iocs",
+    "backup_logs",
+    "notify_siem"
+  ]
+}

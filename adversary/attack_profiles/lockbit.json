@@ -1,0 +1,5 @@
+{
+  "name": "LockBit Safe Emulation",
+  "family": "LockBit",
+  "steps": ["powershell execution", "shadow copy discovery", "smb enumeration", "simulated encryption burst"]
+}
