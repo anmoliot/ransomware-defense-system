@@ -1,0 +1,5 @@
+{
+  "family": "WannaCry",
+  "indicators": [".wncry", "wanadecryptor"],
+  "destructive": false
+}

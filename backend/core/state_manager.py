@@ -21,5 +21,11 @@ class StateManager:
     def get_alerts(self, limit: int = 50) -> List[Alert]:
         return self.alert_history[-limit:]
 
+    def get_alert(self, alert_id: str) -> Optional[Alert]:
+        for alert in self.alert_history:
+            if alert.id == alert_id:
+                return alert
+        return None
+
 # Singleton instance
 state_manager = StateManager()

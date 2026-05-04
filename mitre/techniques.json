@@ -1,0 +1,26 @@
+{
+  "T1486": {
+    "tactic": "Impact",
+    "technique": "Data Encrypted for Impact"
+  },
+  "T1059": {
+    "tactic": "Execution",
+    "technique": "Command and Scripting Interpreter"
+  },
+  "T1071": {
+    "tactic": "Command and Control",
+    "technique": "Application Layer Protocol"
+  },
+  "T1021.002": {
+    "tactic": "Lateral Movement",
+    "technique": "SMB/Windows Admin Shares"
+  },
+  "T1027": {
+    "tactic": "Defense Evasion",
+    "technique": "Obfuscated Files or Information"
+  },
+  "T1204": {
+    "tactic": "Execution",
+    "technique": "User Execution"
+  }
+}

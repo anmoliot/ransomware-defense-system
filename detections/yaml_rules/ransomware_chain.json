@@ -1,0 +1,5 @@
+{
+  "name": "powershell_entropy_smb_chain",
+  "when": ["suspicious_process", "high_entropy", "smb_activity"],
+  "severity": "critical"
+}

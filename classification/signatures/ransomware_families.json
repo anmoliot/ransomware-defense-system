@@ -1,0 +1,6 @@
+{
+  "LockBit": [".lockbit", "restore-my-files"],
+  "BlackCat": ["alphv", ".alphv"],
+  "WannaCry": [".wncry", "wanadecryptor"],
+  "Conti": ["recover-files.txt"]
+}

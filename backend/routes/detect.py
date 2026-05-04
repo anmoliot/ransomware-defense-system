@@ -2,6 +2,7 @@ import uuid
 from datetime import datetime
 from fastapi import APIRouter, BackgroundTasks
 from ..models.schema import DetectionPayload, Alert, SystemState
+from ..core.audit_logger import audit_logger
 from ..core.decision_engine import decision_engine
 from ..core.state_manager import state_manager
 from ..core.websocket_manager import ws_manager
@@ -31,9 +32,24 @@ async def handle_detection(payload: DetectionPayload, background_tasks: Backgrou
             payload_snapshot=payload
         )
         state_manager.add_alert(alert)
+        audit_logger.log(
+            actor=payload.agent_id,
+            action="detection.alert_created",
+            target=alert.id,
+            outcome=verdict.state,
+            details={"risk_score": verdict.risk_score, "signals": verdict.signals},
+        )
         
         # 3. Broadcast asynchronously
         background_tasks.add_task(process_and_broadcast, alert)
+    else:
+        audit_logger.log(
+            actor=payload.agent_id,
+            action="detection.evaluated",
+            target="telemetry",
+            outcome=verdict.state,
+            details={"risk_score": verdict.risk_score},
+        )
 
     return {
         "status": "success",
