@@ -5,6 +5,16 @@
 ### 1. `POST /detect`
 **Description**: Receives telemetry data from agents.
 **Request Body**: `DetectionPayload` (see `backend/models/schema.py`)
+
+Example payload:
+```json
+{
+  "file_rate": 91,
+  "entropy": 7.9,
+  "canary_triggered": true
+}
+```
+
 **Response**: `200 OK`
 ```json
 {
