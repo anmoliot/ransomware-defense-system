@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-void: #060810;
+  --bg-deep: #0a0d16;
+  --bg-surface: #0e1220;
+  --bg-elevated: #131829;
+  --bg-panel: #171d30;
+  --bg-hover: #1c2338;
+  --bg-active: #212843;
+
+  --border-dim: rgba(255,255,255,0.04);
+  --border-subtle: rgba(255,255,255,0.08);
+  --border-default: rgba(255,255,255,0.12);
+  --border-strong: rgba(255,255,255,0.2);
+
+  --text-primary: #e8eaf2;
+  --text-secondary: #8b90a8;
+  --text-muted: #4a5070;
+  --text-disabled: #2e3452;
+
+  --red-bright: #ff3b3b;
+  --red-glow: #e02020;
+  --red-dim: #7a1010;
+  --red-surface: rgba(255,59,59,0.06);
+  --red-surface-strong: rgba(255,59,59,0.12);
+
+  --amber-bright: #ffaa33;
+  --amber-glow: #cc7a00;
+  --amber-dim: #664400;
+  --amber-surface: rgba(255,170,51,0.06);
+
+  --green-bright: #22d97a;
+  --green-glow: #0fa854;
+  --green-dim: #05522a;
+  --green-surface: rgba(34,217,122,0.06);
+
+  --blue-bright: #4d9fff;
+  --blue-glow: #1a6bcc;
+  --blue-dim: #0a3566;
+  --blue-surface: rgba(77,159,255,0.06);
+
+  --cyan-bright: #00d4ff;
+  --cyan-dim: #004d66;
+  --cyan-surface: rgba(0,212,255,0.06);
+
+  --accent: #4d9fff;
+  --accent-dim: rgba(77,159,255,0.15);
+
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Syne', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --shadow-panel: 0 2px 20px rgba(0,0,0,0.4);
+  --shadow-elevated: 0 8px 40px rgba(0,0,0,0.6);
+
+  --sidebar-w: 220px;
+  --topbar-h: 56px;
+  --transition: 0.18s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-default); }
+
+/* Scan line overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Grid noise bg */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(77,159,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77,159,255,0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Status pulse animations */
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,59,59,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(255,59,59,0); }
+}
+@keyframes pulse-amber {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,217,122,0.3); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 4px rgba(34,217,122,0); }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slide-in-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes scan-line {
+  0% { top: -2px; }
+  100% { top: 100%; }
+}
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.8; }
+  97% { opacity: 1; }
+  98% { opacity: 0.85; }
+}
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+@keyframes data-stream {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-slide-in { animation: slide-in-up 0.3s ease forwards; }
+.animate-flicker { animation: flicker 8s infinite; }
